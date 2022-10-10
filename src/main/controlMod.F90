@@ -229,9 +229,17 @@ contains
           use_fates_nocomp,                             &
           use_fates_sp,                                 &
           fates_inventory_ctrl_filename,                &
+<<<<<<< HEAD
           fates_parteh_mode
     
    ! Ozone vegetation stress method 
+=======
+          fates_parteh_mode,                            &
+          use_fates_tree_damage,                        &
+          use_fates_hydrohard,use_fates_frosthard
+
+   ! Ozone vegetation stress method
+>>>>>>> 62cf74a6b (All changes required to the use of frosthard and hydrohard in FATES (optionf the hardening of plants))
    namelist / clm_inparam / o3_veg_stress_method
 
     ! CLM 5.0 nitrogen flags
@@ -706,6 +714,12 @@ contains
     call mpi_bcast (fates_spitfire_mode, 1, MPI_INTEGER, 0, mpicom, ier)
     call mpi_bcast (use_fates_logging, 1, MPI_LOGICAL, 0, mpicom, ier)
     call mpi_bcast (use_fates_planthydro, 1, MPI_LOGICAL, 0, mpicom, ier)
+<<<<<<< HEAD
+=======
+    call mpi_bcast (use_fates_hydrohard, 1, MPI_LOGICAL, 0, mpicom, ier)
+    call mpi_bcast (use_fates_frosthard, 1, MPI_LOGICAL, 0, mpicom, ier)
+    call mpi_bcast (use_fates_tree_damage, 1, MPI_LOGICAL, 0, mpicom, ier)
+>>>>>>> 62cf74a6b (All changes required to the use of frosthard and hydrohard in FATES (optionf the hardening of plants))
     call mpi_bcast (use_fates_cohort_age_tracking, 1, MPI_LOGICAL, 0, mpicom, ier)
     call mpi_bcast (use_fates_ed_st3, 1, MPI_LOGICAL, 0, mpicom, ier)
     call mpi_bcast (use_fates_ed_prescribed_phys,  1, MPI_LOGICAL, 0, mpicom, ier)
@@ -1048,6 +1062,8 @@ contains
        write(iulog, *) '    fates_paramfile = ', fates_paramfile
        write(iulog, *) '    fates_parteh_mode = ', fates_parteh_mode
        write(iulog, *) '    use_fates_planthydro = ', use_fates_planthydro
+       write(iulog, *) '    use_fates_hydrohard = ', use_fates_hydrohard
+       write(iulog, *) '    use_fates_frosthard = ', use_fates_frosthard
        write(iulog, *) '    use_fates_cohort_age_tracking = ', use_fates_cohort_age_tracking
        write(iulog, *) '    use_fates_ed_st3 = ',use_fates_ed_st3
        write(iulog, *) '    use_fates_ed_prescribed_phys = ',use_fates_ed_prescribed_phys
